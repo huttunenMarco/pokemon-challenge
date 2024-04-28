@@ -145,7 +145,7 @@ Will return the following strucure:
 }
 ```
 
-#### [POST] /pokemon/:id
+#### [GET] /pokemon/:id
 
 Retrieve Pokemon and it's next and previous evolutions.
 
