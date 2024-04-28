@@ -132,7 +132,7 @@ Will return the following strucure:
 }
 ```
 
-#### [POST] /pokemon/suggest/:id
+#### [GET] /pokemon/suggest/:id
 
 Retrieve a suggested Pokemon for the Pokemon passed in
 
