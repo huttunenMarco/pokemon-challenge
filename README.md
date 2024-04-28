@@ -18,7 +18,7 @@ Register/Login to MongoDB. Create a database and copy the URI. The URI should lo
 
 #### Clone the repository:
 
-Clone the repository containing the project code to your local machine. `git clone {url}`
+Clone the repository containing the project code to your local machine. `git clone https://github.com/huttunenMarco/pokemon-challenge.git`
 
 #### Update the .env configuration:
 
