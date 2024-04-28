@@ -42,7 +42,7 @@ You can run this command to reinitialise the database at any point.
 
 After initializing the database, run `npm run dev` in the terminal.
 
-This command will start the development server on PORT 9000 (if not changed in the .env file).
+This command will start the development server on PORT 3000 (if not changed in the .env file).
 You should be able to access the API endpoints and interact with the application.
 
 Following these steps should set up your environment and allow you to start working with the project. Let me know if you need further assistance!
