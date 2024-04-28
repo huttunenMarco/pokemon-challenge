@@ -1,8 +1,8 @@
-/* eslint-disable no-console */
+/* eslint-disable */
 import mongoose from 'mongoose';
 import fs from 'fs';
-import config from './config.ts';
-import PokemonModel from './models/pokemon.ts';
+import config from './config.js';
+import PokemonModel from './models/pokemon.js';
 
 const uri = config.databaseUri;
 
@@ -14,7 +14,7 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-async function loadDataFromJson(jsonFilePath) {
+async function loadDataFromJson(jsonFilePath: string) {
   try {
     const data = fs.readFileSync(jsonFilePath).toString();
     const jsonData = JSON.parse(data);
@@ -35,7 +35,7 @@ async function clearDatabase() {
   }
 }
 
-async function insertDataIntoDatabase(jsonFilePath) {
+async function insertDataIntoDatabase(jsonFilePath: string) {
   try {
     await clearDatabase();
     const jsonData = await loadDataFromJson(jsonFilePath);

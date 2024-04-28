@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { IEvolution, IPokemon } from '../interfaces/Pokemon.ts';
+import { IEvolution, IPokemon } from '../interfaces/Pokemon.js';
 
 const evolutionSchema = new mongoose.Schema<IEvolution>({
   num: { type: String, required: true },

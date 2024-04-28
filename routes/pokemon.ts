@@ -1,11 +1,11 @@
 import express, { Router, Request, Response } from 'express';
-import PokemonModel from '../models/pokemon.ts';
-import { validatePokemon } from '../middlewares/validatePokemon.ts';
-import fuzzy from '../utils/fuzzy.ts';
-import { addNewPokemonToEvolutionTree, getEvolutionChain, getPokemon } from '../utils/pokemon.ts';
-import { IPokemon } from '../interfaces/Pokemon.ts';
-import validateFilter from '../middlewares/validateFilter.ts';
-import validateSort from '../middlewares/validateSort.ts';
+import PokemonModel from '../models/pokemon.js';
+import { validatePokemon } from '../middlewares/validatePokemon.js';
+import fuzzy from '../utils/fuzzy.js';
+import { addNewPokemonToEvolutionTree, getEvolutionChain, getPokemon } from '../utils/pokemon.js';
+import { IPokemon } from '../interfaces/Pokemon.js';
+import validateFilter from '../middlewares/validateFilter.js';
+import validateSort from '../middlewares/validateSort.js';
 
 const router: Router = express.Router();
 
@@ -32,8 +32,8 @@ router.post('/', validatePokemon, async (req: Request, res: Response) => {
         if (existingPokemon) {
           await addNewPokemonToEvolutionTree(existingPokemon, evolutionType, newPokemon);
         }
-      } catch (e) {
-        res.status(500).send(`Could not save the new pokemon as ${evolutionType} in pokemon with id ${existingPokemonId}: ${e.message}`);
+      } catch (_e) {
+        res.status(500).send(`Could not save the new pokemon as ${evolutionType} in pokemon with id ${existingPokemonId}`);
       }
     }
 
@@ -45,7 +45,7 @@ router.post('/', validatePokemon, async (req: Request, res: Response) => {
 
 router.get('/search', async (req: Request, res: Response) => {
   try {
-    const name = req.query.name;
+    const name = req.query.name as string;
 
     if (!name || name.length < 3) {
       return res.status(400).json({
@@ -68,7 +68,7 @@ router.get('/search', async (req: Request, res: Response) => {
 
 router.get('/filter/:filterType', validateFilter, validateSort, async (req: Request, res: Response): Promise<void> => {
   try {
-    const sortField = req.query.sort ?? 'id';
+    const sortField = (req.query.sort ?? 'id') as string;
     const sortOrder: -1 | 1 = req.query.order === 'desc' ? -1 : 1;
     const filterQuery = req.query.query;
     const filterType = req.params.filterType;

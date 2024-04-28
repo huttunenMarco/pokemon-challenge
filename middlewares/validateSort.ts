@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 const validateFilter = (req: Request, res: Response, next: NextFunction) => {
-  const sortField = req.query.sort ?? 'id';
+  const sortField = (req.query.sort ?? 'id') as string;
 
   const validSortingFields: string[] = ['id', 'name', 'weight', 'height', 'spawn_chance', 'avg_spawns', 'spawn_time'];
   if (!validSortingFields.includes(sortField)) {

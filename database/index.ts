@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import mongoose from 'mongoose';
-import config from '../config.ts';
+import config from '../config.js';
 
 const uri = config.databaseUri;
 

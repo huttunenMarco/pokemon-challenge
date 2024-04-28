@@ -1,7 +1,7 @@
-import express, { Request, Response, Next } from 'express';
-import pokemonRoutes from '../routes/pokemon.ts';
-import database from '../database/index.ts';
-import config from '../config.ts';
+import express, { Request, Response, NextFunction } from 'express';
+import pokemonRoutes from '../routes/pokemon.js';
+import database from '../database/index.js';
+import config from '../config.js';
 
 const app = express();
 const port = config.port;
@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use('/pokemon', pokemonRoutes);
 
-app.use((err: Error, _req: Request, res: Response, next: Next) => {
+app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({
     error: {
       message: err.message || 'Internal Server Error',

@@ -1,5 +1,6 @@
-import PokemonModel from '../models/pokemon.ts';
-import { IPokemon, IEvolution, EvolutionType } from '../interfaces/Pokemon.ts';
+/* eslint-disable complexity */
+import PokemonModel from '../models/pokemon.js';
+import { IPokemon, IEvolution, EvolutionType } from '../interfaces/Pokemon.js';
 
 export const getEvolutionChain = async (evolutions: IEvolution[], evolutionType: EvolutionType, chain: IPokemon[] = [], visited = new Set()) => {
   if (evolutions.length === 0) {
@@ -28,13 +29,4 @@ export const addNewPokemonToEvolutionTree = async (existingPokemon: IPokemon, ev
 
 export const getPokemon = async (value: string | number, attr: 'num' | 'id' = 'id') => {
   return await PokemonModel.findOne({ [attr]: value });
-};
-
-export const getFilteredPokemons = async (filterField, sortField, sortDirection) => {
-  const type: RegExp = new RegExp(`^${filterField}$`, 'i');
-  const pokemons = await PokemonModel.find({
-    type: { $regex: type },
-  }).sort({ [sortField]: sortDirection });
-
-  return pokemons;
 };

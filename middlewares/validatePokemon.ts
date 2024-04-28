@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import _Ajv from 'ajv';
-import { pokemonJsonSchema } from '../models/pokemon.ts';
+import { pokemonJsonSchema } from '../models/pokemon.js';
 
-const Ajv = _Ajv as unknown as typeof _Ajv.default; // https://github.com/ajv-validator/ajv/issues/2132#issuecomment-1290409907
+import _Ajv from 'ajv';
+
+const Ajv = _Ajv as unknown as typeof _Ajv.default;
+
 const ajv = new Ajv();
 
 const validatePokemon = (req: Request, res: Response, next: NextFunction) => {
@@ -13,8 +15,7 @@ const validatePokemon = (req: Request, res: Response, next: NextFunction) => {
   const valid = validate(req.body.pokemon);
 
   if (!valid) {
-    const errors = validate.errors?.map((error) => error.message).join(', ');
-    return res.status(400).json({ message: `Invalid Pokemon data: ${errors}` });
+    return res.status(400).json({ message: `Invalid Pokemon data` });
   }
 
   next();
