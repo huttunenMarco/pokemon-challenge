@@ -25,20 +25,27 @@ Clone the repository containing the project code to your local machine. `git clo
 In the project directory, locate the .env file.
 Update the DATABASE_URI variable with the URI you copied from MongoDB.
 
-#### Install dependencies
+#### Using Docker
+
+When you're ready, start your application by running:
+`docker compose up --build`.
+
+#### Not using Docker
+
+##### Install dependencies
 
 Open a terminal or command prompt.
 Navigate to the project directory.
 Run `npm install` to install all the necessary dependencies.
 
-#### Initialize the database:
+##### Initialize the database:
 
 Run `npm run initDataBase` in the terminal. This script will load all the data into the database.
 Upon successful completion, you should see a message in the terminal indicating "Data inserted into database successfully".
 
 You can run this command to reinitialise the database at any point.
 
-#### Run the development server:
+##### Run the development server:
 
 After initializing the database, run `npm run dev` in the terminal.
 

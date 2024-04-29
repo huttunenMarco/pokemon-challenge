@@ -4,7 +4,7 @@ import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: ['dist/*'],
+    ignores: ['dist/**/*', 'dist/*'],
     rules: {
       'no-console': 'warn',
       '@typescript-eslint/no-unnecessary-condition': 'error',
@@ -12,7 +12,7 @@ export default [
       complexity: ['error', 6],
     },
     languageOptions: {
-      globals: globals.browser,
+      globals: globals.node,
       parserOptions: {
         project: ['./tsconfig.json'],
       },
