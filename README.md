@@ -81,8 +81,31 @@ The endpoint will return the newly added pokemon.
 - existingPokemonId (number): ID of the existing Pokemon to which the new Pokemon will be added to its evolution chain.
 - evolutionType (string): Type of evolution. Accepted values: "prev_evolution", "next_evolution".
 
-Example: `[POST] /pokemon/`
-Will return the following strucure:
+Example: `[POST] /pokemon/
+body: {
+"pokemon": {
+    "id": 1337,
+    "num": "1337",
+    "name": "Bulbasaur1337",
+    "img": "http://www.serebii.net/pokemongo/pokemon/001.png",
+    "type": ["Grass", "Poison"],
+    "height": "0.71 m",
+    "weight": "6.9 kg",
+    "candy": "Bulbasaur Candy",
+    "candy_count": 25,
+    "egg": "2 km",
+    "spawn_chance": 0.69,
+    "avg_spawns": 69,
+    "spawn_time": "20:00",
+    "multipliers": [1.58],
+    "weaknesses": ["Fire", "Ice", "Flying", "Psychic"]
+  },
+  "existingPokemonId": 52,
+  "evolutionType": "prev_evolution"
+}
+`
+Will add the new Pokemon to the database and add it as prev_evolution to Pokemon with id 52.
+Endpoint will return the following strucure:
 
 ```
 {
